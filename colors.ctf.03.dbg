@@ -1,0 +1,498 @@
+.include "hdr.asm"
+.accu 16
+.index 16
+.16bit
+.define __main_locals 0
+
+.SECTION ".maintext_0x0" SUPERFREE
+
+main:
+.ifgr __main_locals 0
+tsa
+sec
+sbc #__main_locals
+tas
+.endif
+lda.w #:bg2_m_end
+lda.w #bg2_m_end + 0
+sta.b tcc__r0
+lda.w #:bg2_m
+lda.w #bg2_m + 0
+sta.b tcc__r1
+sec
+lda.b tcc__r0
+sbc.b tcc__r1
+sta.b tcc__r0
+pea.w 30720
+sep #$20
+lda #0
+pha
+rep #$20
+pei (tcc__r0)
+pea.w :bg2_m
+pea.w bg2_m + 0
+sep #$20
+lda #1
+pha
+rep #$20
+jsr.l bgInitMapSet
+tsa
+clc
+adc #10
+tas
+lda.w #:bg2_tiles_end
+sta.b tcc__r0h
+lda.w #bg2_tiles_end + 0
+sta.b tcc__r0
+lda.w #:bg2_tiles
+lda.w #bg2_tiles + 0
+sta.b tcc__r1
+sec
+lda.b tcc__r0
+sbc.b tcc__r1
+sta.b tcc__r0
+lda.w #:bg2_p_end
+lda.w #bg2_p_end + 0
+sta.b tcc__r1
+lda.w #:bg2_p
+lda.w #bg2_p + 0
+sta.b tcc__r2
+sec
+lda.b tcc__r1
+sbc.b tcc__r2
+sta.b tcc__r1
+pea.w 4096
+pea.w 16
+pei (tcc__r1)
+pei (tcc__r0)
+sep #$20
+lda #1
+pha
+rep #$20
+pea.w :bg2_p
+pea.w bg2_p + 0
+pea.w :bg2_tiles
+pea.w bg2_tiles + 0
+sep #$20
+lda #1
+pha
+rep #$20
+jsr.l bgInitTileSet
+tsa
+clc
+adc #18
+tas
+lda.w #:sprites_tiles_end
+sta.b tcc__r0h
+lda.w #sprites_tiles_end + 0
+sta.b tcc__r0
+lda.w #:sprites_tiles
+lda.w #sprites_tiles + 0
+sta.b tcc__r1
+sec
+lda.b tcc__r0
+sbc.b tcc__r1
+sta.b tcc__r0
+lda.w #:sprites_p_end
+lda.w #sprites_p_end + 0
+sta.b tcc__r1
+lda.w #:sprites_p
+lda.w #sprites_p + 0
+sta.b tcc__r2
+sec
+lda.b tcc__r1
+sbc.b tcc__r2
+sta.b tcc__r1
+sep #$20
+lda #96
+pha
+rep #$20
+pea.w 16384
+sep #$20
+lda #0
+pha
+rep #$20
+pei (tcc__r1)
+pea.w :sprites_p
+pea.w sprites_p + 0
+pei (tcc__r0)
+pea.w :sprites_tiles
+pea.w sprites_tiles + 0
+jsr.l oamInitGfxSet
+tsa
+clc
+adc #16
+tas
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+jsr.l setMode
+pla
+sep #$20
+lda #1
+pha
+rep #$20
+jsr.l bgSetDisable
+tsa
+clc
+adc #1
+tas
+sep #$20
+lda #1
+pha
+rep #$20
+jsr.l bgSetEnable
+tsa
+clc
+adc #1
+tas
+jsr.l setScreenOn
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+pea.w 0
+jsr.l oamSetEx
+tsa
+clc
+adc #4
+tas
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+pea.w 4
+jsr.l oamSetEx
+tsa
+clc
+adc #4
+tas
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+pea.w 8
+jsr.l oamSetEx
+tsa
+clc
+adc #4
+tas
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+pea.w 12
+jsr.l oamSetEx
+tsa
+clc
+adc #4
+tas
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+pea.w 16
+jsr.l oamSetEx
+tsa
+clc
+adc #4
+tas
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+pea.w 20
+jsr.l oamSetEx
+tsa
+clc
+adc #4
+tas
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+pea.w 24
+jsr.l oamSetEx
+tsa
+clc
+adc #4
+tas
+pea.w (0 * 256 + 1)
+sep #$20
+rep #$20
+pea.w 28
+jsr.l oamSetEx
+tsa
+clc
+adc #4
+tas
+stz.b tcc__r0
+lda.b tcc__r0
+sta.w y + 0
+pea.w :hdmaGradientList
+pea.w hdmaGradientList + 0
+jsr.l setModeHdmaColor
+tsa
+clc
+adc #4
+tas
+lda.w #0
+sep #$20
+sta.w pada + 0
+rep #$20
+lda.w #0
+sta.b tcc__r0
+sep #$20
+sta.w padb + 0
+rep #$20
+__local_6:
+sep #$20
+lda #0
+pha
+rep #$20
+pea.w 0
+pea.w (0 * 256 + 0)
+sep #$20
+lda #3
+pha
+rep #$20
+lda.w y + 0
+pha
+pea.w 0
+pea.w 0
+jsr.l oamSet
+tsa
+clc
+adc #12
+tas
+sep #$20
+lda #1
+pha
+rep #$20
+pea.w 0
+pea.w (0 * 256 + 0)
+sep #$20
+lda #3
+pha
+rep #$20
+lda.w y + 0
+pha
+pea.w 32
+pea.w 4
+jsr.l oamSet
+tsa
+clc
+adc #12
+tas
+sep #$20
+lda #2
+pha
+rep #$20
+pea.w 0
+pea.w (0 * 256 + 0)
+sep #$20
+lda #3
+pha
+rep #$20
+lda.w y + 0
+pha
+pea.w 64
+pea.w 8
+jsr.l oamSet
+tsa
+clc
+adc #12
+tas
+sep #$20
+lda #3
+pha
+rep #$20
+pea.w 0
+pea.w (0 * 256 + 0)
+sep #$20
+lda #3
+pha
+rep #$20
+lda.w y + 0
+pha
+pea.w 96
+pea.w 12
+jsr.l oamSet
+tsa
+clc
+adc #12
+tas
+sep #$20
+lda #4
+pha
+rep #$20
+pea.w 0
+pea.w (0 * 256 + 0)
+sep #$20
+lda #3
+pha
+rep #$20
+lda.w y + 0
+pha
+pea.w 128
+pea.w 16
+jsr.l oamSet
+tsa
+clc
+adc #12
+tas
+sep #$20
+lda #5
+pha
+rep #$20
+pea.w 0
+pea.w (0 * 256 + 0)
+sep #$20
+lda #3
+pha
+rep #$20
+lda.w y + 0
+pha
+pea.w 160
+pea.w 20
+jsr.l oamSet
+tsa
+clc
+adc #12
+tas
+sep #$20
+lda #6
+pha
+rep #$20
+pea.w 0
+pea.w (0 * 256 + 0)
+sep #$20
+lda #3
+pha
+rep #$20
+lda.w y + 0
+pha
+pea.w 192
+pea.w 24
+jsr.l oamSet
+tsa
+clc
+adc #12
+tas
+sep #$20
+lda #7
+pha
+rep #$20
+pea.w 0
+pea.w (0 * 256 + 0)
+sep #$20
+lda #3
+pha
+rep #$20
+lda.w y + 0
+pha
+pea.w 224
+pea.w 28
+jsr.l oamSet
+tsa
+clc
+adc #12
+tas
+lda.w y + 0
+sta.b tcc__r0
+sta.b tcc__r1
+lda.b tcc__r0h
+sta.b tcc__r1h
+inc.b tcc__r0
+lda.b tcc__r0
+sta.w y + 0
+lda.l pad_keys + 0
+sta.w pad0 + 0
+lda.w pad0 + 0
+and.w #128
+sta.b tcc__r0
+lda.b tcc__r0 ; DON'T OPTIMIZE
+bne +
+brl __local_0
++
+lda.w #0
+sep #$20
+lda.w pada + 0
+rep #$20
+sta.b tcc__r0
+lda.b tcc__r0 ; DON'T OPTIMIZE
+bne +
+brl __local_1
++
+bra __local_2
+__local_1:
+lda.w #1
+sep #$20
+sta.w pada + 0
+lda #0
+pha
+rep #$20
+jsr.l setModeHdmaReset
+tsa
+clc
+adc #1
+tas
+__local_2:
+bra __local_3
+__local_0:
+lda.w #0
+sta.b tcc__r0
+sep #$20
+sta.w pada + 0
+rep #$20
+__local_3:
+lda.w pad0 + 0
+and.w #32768
+sta.b tcc__r0
+lda.b tcc__r0 ; DON'T OPTIMIZE
+bne +
+brl __local_4
++
+lda.w #1
+sep #$20
+sta.w padb + 0
+rep #$20
+pea.w :hdmaGradientList
+pea.w hdmaGradientList + 0
+jsr.l setModeHdmaColor
+tsa
+clc
+adc #4
+tas
+bra __local_5
+__local_4:
+lda.w #0
+sta.b tcc__r0
+sep #$20
+sta.w padb + 0
+rep #$20
+__local_5:
+jsr.l WaitForVBlank
+jmp.w __local_6
+lda.w #0
+sta.b tcc__r0
+__local_7:
+.ifgr __main_locals 0
+tsa
+clc
+adc #__main_locals
+tas
+.endif
+rtl
+.ENDS
+.RAMSECTION "ram{WLA_FILENAME}.data" APPENDTO "globram.data"
+
+.ENDS
+
+.SECTION "{WLA_FILENAME}.data" APPENDTO "glob.data"
+
+.ENDS
+
+.SECTION ".rodata" SUPERFREE
+
+.ENDS
+
+.RAMSECTION ".bss" BANK $7e SLOT 2
+pada dsb 1
+padb dsb 1
+pad0 dsb 2
+y dsb 2
+.ENDS

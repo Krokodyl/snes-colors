@@ -1,0 +1,8 @@
+[objects]
+colors.obj
+data.obj
+hdr.obj
+d:\emulation\pvsneslib\\pvsneslib\lib\LoROM_SlowROM/crt0_snes.obj
+d:\emulation\pvsneslib\\pvsneslib\lib\LoROM_SlowROM/libc.obj
+d:\emulation\pvsneslib\\pvsneslib\lib\LoROM_SlowROM/libm.obj
+d:\emulation\pvsneslib\\pvsneslib\lib\LoROM_SlowROM/libtcc.obj
