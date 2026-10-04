@@ -17,5 +17,5 @@ Room for improvement:
 - 2 of the background palettes are not used
 - The BG1 colors count could be increased further more with f-blank
 
-[Download ROM colors.sfc](colors.sfc)
+[Download ROM colors.sfc](https://github.com/Krokodyl/snes-colors/raw/refs/heads/master/colors.sfc)
 
